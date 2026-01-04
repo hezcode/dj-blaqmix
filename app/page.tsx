@@ -1,4 +1,8 @@
 import About from "@/components/pageSection/About";
+import BlaqHouse from "@/components/pageSection/BlaqHouse";
+import BlaqHouseDetails from "@/components/pageSection/BlaqHouseDetails";
+import Events from "@/components/pageSection/Events";
+import FeaturedEvents from "@/components/pageSection/FeaturedEvents";
 import IntroSection from "@/components/pageSection/IntroSection";
 import ScrollRevealCover from "@/components/pageSection/ScrollRevealCover";
 import Image from "next/image";
@@ -9,9 +13,10 @@ export default function Home() {
       <ScrollRevealCover />
       <IntroSection />
       <About />
-      <section id="events" className=" h-screen w-full border-yellow-600 ">
-        Featured Events
-      </section>
+      <FeaturedEvents />
+      <BlaqHouse />
+      <BlaqHouseDetails />
+      <Events />
     </main>
   );
 }

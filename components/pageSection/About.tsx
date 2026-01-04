@@ -70,7 +70,7 @@ const About = () => {
                 DJ Blaqmix, also known as The Dimple DJ, is a Nigerian disc
                 jockey and music producer.
               </p>
-              <div className=" about-paragraphs font-body-inter font-light text-lg flex flex-col gap-y-4 mx-7">
+              <div className=" about-paragraphs font-body-inter font-normal text-lg flex flex-col gap-y-4 mx-7 text-gray-300 ">
                 <p className="  ">
                   With a sound rooted in contemporary African rhythms, DJ
                   Blaqmix has built a strong digital presence through mixtapes

@@ -35,3 +35,35 @@ body {
   transition: all 500ms;
   color: var(--color-blaqmix-red);
 }
+
+@utility hide-scroll {
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility caret-hover {
+  @apply text-black transition-all duration-300 cursor-pointer bg-white;
+}
+
+@utility horizontal-shadow {
+  box-shadow: 8px 0 5px -4px #333, -8px 0 5px -4px #333;
+}
+
+@utility horizontal-shadow-inside {
+  box-shadow: inset 8px 0 5px -4px #333, inset -8px 0 5px -4px #333;
+}
+
+@utility slide-animation {
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}

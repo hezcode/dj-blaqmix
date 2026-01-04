@@ -63,7 +63,7 @@ const IntroSection = () => {
         id="intro"
       >
         <div className="relative flex flex-col justify-center w-full h-full">
-          <h3 className="subtitle text-2xl font-medium font-poppins mb-4 ">
+          <h3 className="subtitle text-2xl font-medium font-poppins mb-4 text-gray-300">
             {" "}
             From afrobeat to amapiano — the vibe is always premium.{" "}
           </h3>

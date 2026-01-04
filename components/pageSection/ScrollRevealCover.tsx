@@ -24,7 +24,7 @@ const ScrollRevealCover = () => {
       .to(".masked-img", {
         maskSize: "15000%",
         scale: 1.3,
-        duration: 1.5,
+        duration: 1.8,
       });
   });
 
@@ -38,7 +38,7 @@ const ScrollRevealCover = () => {
         alt="blaqmix-logo"
         width={400}
         height={200}
-        className="abs-center masked-img size-full object-cover bg-amber-50 "
+        className="abs-center masked-img size-full object-cover object-center bg-amber-50 "
       />
     </div>
   );
