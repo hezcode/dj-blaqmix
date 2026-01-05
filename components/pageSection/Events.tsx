@@ -25,7 +25,10 @@ const events = [
 
 const Events = () => {
   return (
-    <section className="events py-24 px-4 overflow-x-hidden max-w-[1200px] mx-auto ">
+    <section
+      id="upcoming-events"
+      className="events py-24 px-4 overflow-x-hidden max-w-[1200px] mx-auto "
+    >
       <h2 className=" font-bold text-blaqmix-red font-clash-display text-center text-[32px] ">
         Upcoming Events
       </h2>
@@ -44,7 +47,7 @@ const Events = () => {
                   alt="event-image"
                 />
               </div>
-              <div className=" absolute w-[90%] h-[90%] bottom-0 right-0 border-b-2 border-r-2 " />
+              {/* <div className=" absolute w-[90%] h-[90%] bottom-0 right-0 border-b-2 border-r-2 " /> */}
             </div>
           ))}
         </div>

@@ -35,7 +35,11 @@ const BlaqHouse = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="h-screen overflow-hidden">
+    <section
+      id="blaqhouse"
+      ref={containerRef}
+      className="h-screen overflow-hidden"
+    >
       <div className="flex size-full">
         <video
           ref={videoRef}

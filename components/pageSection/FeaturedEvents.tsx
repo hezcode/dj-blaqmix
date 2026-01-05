@@ -20,7 +20,7 @@ const logosLink = [
 const FeaturedEvents = () => {
   return (
     <section className=" py-12 ">
-      <div className="relative overflow-x-hidden gap-x-6 w-[50%] mx-auto horizontal-shadow-inside   px-6 py-6 rounded-full  ">
+      <div className="relative overflow-x-hidden gap-x-6 w-[50%] mx-auto horizontal-shadow-inside   px-4 py-4 rounded-full  ">
         <div className=" flex items-center justify-between slide-animation ">
           {logosLink.map((logo) => (
             <div className="bg-gray-400 rounded-full p-2 " key={logo.id}>

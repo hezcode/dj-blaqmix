@@ -59,7 +59,7 @@ const About = () => {
   });
   return (
     <section id="about" className="relative overflow-x-hidden ">
-      <div className=" h-90dvh w-full max-w-[1600px] mx-auto px-4 md:px-6 py-24 flex justify-between items-center  ">
+      <div className=" h-dvh w-full max-w-[1600px] mx-auto px-4 md:px-6 py-24 flex justify-between items-center  ">
         <div className="w-[45%]">
           <h3 className=" text-lg text-blaqmix-red font-medium font-poppins mb-9 ">
             THE STORY BEHIND THE SOUND

@@ -57,7 +57,7 @@ const IntroSection = () => {
   });
 
   return (
-    <section className="relative overflow-x-hidden ">
+    <section id="hero" className="relative overflow-x-hidden ">
       <div
         className="content py-24 px-4 max-w-[1240px] mx-auto h-screen "
         id="intro"

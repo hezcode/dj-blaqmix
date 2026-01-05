@@ -17,7 +17,7 @@ const Header = () => {
         }
       });
     }
-    return () => window.removeEventListener(("scroll", () => {}));
+    return () => window.removeEventListener("scroll", () => {});
   }, []);
   return (
     <>
@@ -35,19 +35,16 @@ const Header = () => {
               </div>
               <ul className="flex gap-x-7 text-sm font-body-inter font-medium list-none max-sm:hidden text-white  ">
                 <li className=" hover:link-hovered ">
-                  <Link href="/">Home</Link>
+                  <Link href="#hero">Home</Link>
                 </li>
                 <li className="hover:link-hovered ">
                   <Link href="#about">About</Link>
                 </li>
                 <li className="hover:link-hovered ">
-                  <Link href="/music">BlaqHouse</Link>
+                  <Link href="#blaqhouse">BlaqHouse</Link>
                 </li>
                 <li className="hover:link-hovered ">
-                  <Link href="#events">Events</Link>
-                </li>
-                <li className="hover:link-hovered ">
-                  <Link href="/services">Services</Link>
+                  <Link href="#upcoming-events">Upcoming Events</Link>
                 </li>
               </ul>
               <div className=" p-4 bg-black rounded-t-2xl rounded-br-2xl font-body-inter font-semibold ">
