@@ -1,0 +1,14 @@
+import { sanityClient, isSanityConfigured } from "@/lib/sanity.client";
+import { UPCOMING_EVENTS_QUERY } from "@/lib/sanity.queries";
+import type { EventItem } from "@/types/event";
+
+export const getUpcomingEvents = async (): Promise<EventItem[]> => {
+  if (!isSanityConfigured) return [];
+
+  try {
+    const events = await sanityClient.fetch<EventItem[]>(UPCOMING_EVENTS_QUERY);
+    return events ?? [];
+  } catch {
+    return [];
+  }
+};

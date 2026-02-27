@@ -7,86 +7,106 @@ import { faCalendarAlt, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
+import { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const IntroSection = () => {
-  useGSAP(() => {
-    const introTitleSplit = new SplitText(".title", { type: "words, chars" });
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-    // timeline for texts
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#intro",
-          start: "top center",
-        },
-      })
-      .from(".subtitle", {
-        opacity: 0,
-        y: 100,
-        duration: 0.8,
-        ease: "back.inOut",
-      })
-      .from(introTitleSplit.words, {
-        opacity: 0,
-        yPercent: 100,
-        duration: 1.8,
-        stagger: 0.04,
-        ease: "expo.out",
-      })
-      .from(".btn-container button", {
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.8,
-        stagger: 0.04,
-        ease: "expo.out",
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        // Respect reduced motion: skip intro animations.
       });
 
-    //   timeline for light glow
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#intro",
-          start: "top bottom",
-          scrub: true,
-          end: "bottom top",
-        },
-      })
-      .from(".left-light", { scale: 0.3, duration: 1 }, 0)
-      .from(".right-light", { scale: 0.2, duration: 1 }, 0);
-  });
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const introTitleSplit = new SplitText(".title", { type: "words, chars" });
+
+        // timeline for texts
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: "#intro",
+              start: "top center",
+            },
+          })
+          .from(".subtitle", {
+            opacity: 0,
+            y: 80,
+            duration: 0.8,
+            ease: "back.inOut",
+          })
+          .from(introTitleSplit.words, {
+            opacity: 0,
+            yPercent: 100,
+            duration: 1.2,
+            stagger: 0.04,
+            ease: "expo.out",
+          })
+          .from(".btn-container button", {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.7,
+            stagger: 0.02,
+            ease: "expo.out",
+          });
+
+        // timeline for light glow
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: "#intro",
+              start: "top bottom",
+              scrub: true,
+              end: "bottom top",
+            },
+          })
+          .from(".hero-left-light", { scale: 0.3, duration: 1 }, 0)
+          .from(".hero-right-light", { scale: 0.2, duration: 1 }, 0);
+
+        return () => {
+          introTitleSplit.revert();
+        }; 
+      });
+
+      return () => mm.revert();
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <section id="hero" className="relative overflow-x-hidden ">
+    <section ref={sectionRef} id="hero" className="relative overflow-x-hidden">
       <div
-        className="content py-24 px-4 max-w-[1240px] mx-auto h-screen "
+        className="content page-container-wide section-pad min-h-dvh"
         id="intro"
       >
         <div className="relative flex flex-col justify-center w-full h-full">
-          <h3 className="subtitle text-2xl font-medium font-poppins mb-4 text-gray-300">
-            {" "}
-            From afrobeat to amapiano — the vibe is always premium.{" "}
+          <h3 className="subtitle text-base sm:text-lg lg:text-2xl font-medium font-poppins mb-4 text-gray-300">
+            From afrobeat to amapiano — the vibe is always premium.
           </h3>
-          <h1 className="title font-clash-display text-8xl font-extrabold leading-tight ">
+          <h1 className="title font-clash-display h1-fluid font-extrabold tracking-tight">
             {" "}
             No Long talk. <br /> Just Vibes.{" "}
           </h1>
-          <div className="btn-container flex items-center gap-x-6 mt-12 ">
+          <div className="btn-container flex flex-col sm:flex-row sm:items-center items-stretch gap-4 sm:gap-x-6 mt-10 sm:mt-12 max-w-xl">
             <CustomButton
               text="Book me for your next Event"
               Icon={<FontAwesomeIcon icon={faCalendarAlt} />}
-              className=" bg-white text-black text-lg font-semibold rounded-2xl "
+              action="book"
+              className=" bg-white text-black text-base sm:text-lg font-semibold rounded-2xl w-full sm:w-auto justify-center text-nowrap "
             />
             <CustomButton
               text="Listen to my latest mix"
               Icon={<FontAwesomeIcon icon={faPlay} />}
-              className=" bg-transparent rounded-2xl border border-blaqmix-red text-blaqmix-red text-lg font-semibold "
+              className=" bg-transparent rounded-2xl border border-blaqmix-red text-blaqmix-red text-base sm:text-lg font-semibold w-full sm:w-auto justify-center text-nowrap "
             />
           </div>
         </div>
       </div>
-      <div className=" left-light absolute w-[450px] h-[450px] rounded-full bg-gray-400 -z-10 top-0 -left-4 blur-2xl opacity-15 " />
-      <div className=" right-light absolute w-[350px] h-[350px] rounded-full bg-gray-400 -z-10 bottom-24 -right-24 blur-3xl opacity-15 " />
+      <div className=" hero-left-light absolute w-[260px] h-[260px] sm:w-[380px] sm:h-[380px] lg:w-[450px] lg:h-[450px] rounded-full bg-gray-400 -z-10 top-0 -left-4 blur-2xl opacity-15 " />
+      <div className=" hero-right-light absolute w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] lg:w-[350px] lg:h-[350px] rounded-full bg-gray-400 -z-10 bottom-24 -right-16 sm:-right-24 blur-3xl opacity-15 " />
     </section>
   );
 };

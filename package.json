@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "sanity:dev": "sanity dev --host 0.0.0.0 --port 3333",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -15,14 +16,21 @@
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.0",
     "@gsap/react": "^2.1.2",
+    "@sanity/client": "^7.16.0",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/schema": "^4.22.0",
+    "@sanity/types": "^4.22.0",
+    "@sendgrid/mail": "^8.1.6",
     "clsx": "^2.1.1",
     "gsap": "^3.14.2",
     "motion": "^12.23.25",
     "next": "16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "@sendgrid/mail": "^8.1.6",
-    "react-hot-toast": "^2.6.0"
+    "react-hook-form": "^7.71.2",
+    "react-hot-toast": "^2.6.0",
+    "sanity": "^4.3.0",
+    "styled-components": "^6.3.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
