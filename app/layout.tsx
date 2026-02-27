@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/images/blaqmix_sitting.png",
+        url: "/images/blaqmix_standing.jpg",
         width: 1200,
         height: 630,
         alt: "DJ Blaqmix",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: "DJ Blaqmix | The Dimple DJ",
     description:
       "Book DJ Blaqmix for unforgettable events, premium sound, and crowd-moving sets.",
-    images: ["/images/blaqmix_sitting.png"],
+    images: ["/images/blaqmix_standing.jpg"],
   },
 };
 

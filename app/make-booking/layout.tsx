@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: "/make-booking",
     images: [
       {
-        url: "/images/blaqmix_sitting.png",
+        url: "/images/blaqmix_standing.jpg",
         width: 1200,
         height: 630,
         alt: "Book DJ Blaqmix",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Book DJ Blaqmix",
     description:
       "Request your event date and book DJ Blaqmix for a premium performance experience.",
-    images: ["/images/blaqmix_sitting.png"],
+    images: ["/images/blaqmix_standing.jpg"],
   },
 };
 

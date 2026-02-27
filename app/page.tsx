@@ -8,35 +8,35 @@ import Footer from "@/components/global/Footer";
 import IntroSection from "@/components/pageSection/IntroSection";
 import ScrollRevealCover from "@/components/pageSection/ScrollRevealCover";
 
-export const metadata: Metadata = {
-  title: "Home",
-  description:
-    "Experience DJ Blaqmix: premium mixes, live sets, upcoming events, and direct contact for enquiries.",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "DJ Blaqmix | Home",
-    description:
-      "Explore DJ Blaqmix live sets, event highlights, and enquiry options.",
-    url: "/",
-    images: [
-      {
-        url: "/images/blaqmix_standing.jpg",
-        width: 1200,
-        height: 630,
-        alt: "DJ Blaqmix Home",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "DJ Blaqmix | Home",
-    description:
-      "Explore DJ Blaqmix live sets, event highlights, and enquiry options.",
-    images: ["/images/blaqmix_sitting.png"],
-  },
-};
+// export const metadata: Metadata = {
+//   title: "Home",
+//   description:
+//     "Experience DJ Blaqmix: premium mixes, live sets, upcoming events, and direct contact for enquiries.",
+//   alternates: {
+//     canonical: "/",
+//   },
+//   openGraph: {
+//     title: "DJ Blaqmix | Home",
+//     description:
+//       "Explore DJ Blaqmix live sets, event highlights, and enquiry options.",
+//     url: "/",
+//     images: [
+//       {
+//         url: "/images/blaqmix_standing.jpg",
+//         width: 1200,
+//         height: 630,
+//         alt: "DJ Blaqmix Home",
+//       },
+//     ],
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "DJ Blaqmix | Home",
+//     description:
+//       "Explore DJ Blaqmix live sets, event highlights, and enquiry options.",
+//     images: ["/images/blaqmix_sitting.png"],
+//   },
+// };
 
 export default function Home() {
   return (
