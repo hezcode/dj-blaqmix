@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ScrollRevealCover = () => {
   const coverRef = useRef<HTMLDivElement | null>(null);
+
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
@@ -27,6 +28,17 @@ const ScrollRevealCover = () => {
           };
 
           if (reduceMotion) return;
+          const imageEl = coverRef.current?.querySelector(
+            ".masked-img",
+          ) as HTMLElement | null;
+          if (!imageEl) return;
+
+          gsap.set(imageEl, {
+            scale: 1,
+            maskSize: "50%",
+            webkitMaskSize: "50%",
+            transformOrigin: "center center",
+          });
 
           gsap
             .timeline({
@@ -36,33 +48,33 @@ const ScrollRevealCover = () => {
                 end: "bottom top",
                 scrub: true,
                 pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
               },
             })
-            .to(".masked-img", {
+            .to(imageEl, {
               maskSize: isMobile ? "8000%" : "15000%",
+              webkitMaskSize: isMobile ? "8000%" : "15000%",
               scale: 1.3,
               duration: 1.8,
             });
-        }
+        },
       );
 
       return () => mm.revert();
     },
-    { scope: coverRef }
+    { scope: coverRef },
   );
 
   return (
-    <div
-      ref={coverRef}
-      className="min-h-dvh relative w-full overflow-hidden "
-    >
+    <div ref={coverRef} className="min-h-dvh relative w-full overflow-hidden">
       <Image
         src="/images/hero_bg_blaqmix.png"
         alt="blaqmix-logo"
-        width={400}
-        height={200}
+        fill
         priority
-        className=" abs-center masked-img size-full object-cover object-center bg-amber-50 "
+        sizes="100vw"
+        className="masked-img size-full object-cover object-center bg-amber-50"
       />
     </div>
   );

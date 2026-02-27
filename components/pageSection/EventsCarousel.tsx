@@ -50,10 +50,10 @@ const EventsCarousel = ({ events }: EventsCarouselProps) => {
           event.status === "sold-out"
             ? "Sold Out"
             : event.status === "cancelled"
-            ? "Cancelled"
-            : "Upcoming",
+              ? "Cancelled"
+              : "Upcoming",
       })),
-    [events]
+    [events],
   );
 
   const scroll = useCallback((direction: "left" | "right") => {
@@ -87,9 +87,12 @@ const EventsCarousel = ({ events }: EventsCarouselProps) => {
   if (!hasEvents) {
     return (
       <div className="mt-10 rounded-3xl border border-gray-700 bg-white/5 p-8 text-center">
-        <p className="text-lg font-poppins text-white">No upcoming events yet.</p>
+        <p className="text-lg font-poppins text-white">
+          No upcoming events yet.
+        </p>
         <p className="mt-2 text-sm text-gray-400">
-          New events will appear here as soon as they are published from the CMS.
+          New events will appear here as soon as they are published from the
+          CMS.
         </p>
       </div>
     );
@@ -160,26 +163,40 @@ const EventsCarousel = ({ events }: EventsCarouselProps) => {
 
                 <div className="space-y-2 text-sm text-gray-200">
                   <p className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faCalendarDays} className="text-blaqmix-red" />
+                    <FontAwesomeIcon
+                      icon={faCalendarDays}
+                      className="text-blaqmix-red"
+                    />
                     <span>{event.dateLabel}</span>
                   </p>
                   {event.startTime ? (
                     <p className="flex items-center gap-2">
-                      <FontAwesomeIcon icon={faClock} className="text-blaqmix-red" />
+                      <FontAwesomeIcon
+                        icon={faClock}
+                        className="text-blaqmix-red"
+                      />
                       <span>{event.startTime}</span>
                     </p>
                   ) : null}
                   {(event.venueName || event.city) && (
                     <p className="flex items-center gap-2">
-                      <FontAwesomeIcon icon={faLocationDot} className="text-blaqmix-red" />
+                      <FontAwesomeIcon
+                        icon={faLocationDot}
+                        className="text-blaqmix-red"
+                      />
                       <span>
-                        {[event.venueName, event.city].filter(Boolean).join(", ")}
+                        {[event.venueName, event.city]
+                          .filter(Boolean)
+                          .join(", ")}
                       </span>
                     </p>
                   )}
                   {event.priceLabel ? (
                     <p className="flex items-center gap-2">
-                      <FontAwesomeIcon icon={faTag} className="text-blaqmix-red" />
+                      <FontAwesomeIcon
+                        icon={faTag}
+                        className="text-blaqmix-red"
+                      />
                       <span>{event.priceLabel}</span>
                     </p>
                   ) : null}

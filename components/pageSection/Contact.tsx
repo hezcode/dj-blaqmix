@@ -144,7 +144,11 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="relative overflow-x-hidden">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="relative overflow-x-hidden"
+    >
       <div id="contact-content" className="page-container section-pad">
         <div className="text-center mb-12 sm:mb-16">
           <h3 className="contact-header font-clash-display font-bold h2-fluid mb-4">
@@ -161,7 +165,9 @@ const Contact = () => {
           <div className="form-field rounded-2xl border border-gray-600 bg-white/5 backdrop-blur-2xl p-4">
             <div className="flex items-center gap-2 text-blaqmix-red">
               <FontAwesomeIcon icon={faHeadset} />
-              <span className="font-semibold font-poppins text-sm">Support</span>
+              <span className="font-semibold font-poppins text-sm">
+                Support
+              </span>
             </div>
             <p className="text-sm text-gray-300 mt-2">
               For quick questions and event information.
@@ -170,7 +176,9 @@ const Contact = () => {
           <div className="form-field rounded-2xl border border-gray-600 bg-white/5 backdrop-blur-2xl p-4">
             <div className="flex items-center gap-2 text-blaqmix-red">
               <FontAwesomeIcon icon={faCircleInfo} />
-              <span className="font-semibold font-poppins text-sm">Enquiries</span>
+              <span className="font-semibold font-poppins text-sm">
+                Enquiries
+              </span>
             </div>
             <p className="text-sm text-gray-300 mt-2">
               Partnerships, media, and collaboration opportunities.
@@ -179,7 +187,9 @@ const Contact = () => {
           <div className="form-field rounded-2xl border border-gray-600 bg-white/5 backdrop-blur-2xl p-4">
             <div className="flex items-center gap-2 text-blaqmix-red">
               <FontAwesomeIcon icon={faQuestionCircle} />
-              <span className="font-semibold font-poppins text-sm">Bookings</span>
+              <span className="font-semibold font-poppins text-sm">
+                Bookings
+              </span>
             </div>
             <p className="text-sm text-gray-300 mt-2">
               Ready to book? Go to the booking page for full event details.
@@ -190,12 +200,14 @@ const Contact = () => {
         <form
           noValidate
           onSubmit={handleSubmit(onSubmit)}
+          suppressHydrationWarning
           className="max-w-4xl mx-auto bg-white/5 backdrop-blur-2xl border border-gray-600 rounded-3xl p-6 sm:p-8 lg:p-10 space-y-6"
         >
           <input
             type="text"
             tabIndex={-1}
             autoComplete="off"
+            suppressHydrationWarning
             className="hidden"
             {...register("company")}
           />
@@ -211,13 +223,17 @@ const Contact = () => {
                 type="text"
                 className="form-input"
                 placeholder="John Doe"
+                autoComplete="name"
+                suppressHydrationWarning
                 {...register("name", {
                   required: "Full name is required",
                   minLength: { value: 2, message: "Name is too short" },
                 })}
               />
               {errors.name ? (
-                <p className="text-xs text-blaqmix-red">{errors.name.message}</p>
+                <p className="text-xs text-blaqmix-red">
+                  {errors.name.message}
+                </p>
               ) : null}
             </div>
 
@@ -231,6 +247,8 @@ const Contact = () => {
                 type="email"
                 className="form-input"
                 placeholder="john@example.com"
+                autoComplete="email"
+                suppressHydrationWarning
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -240,7 +258,9 @@ const Contact = () => {
                 })}
               />
               {errors.email ? (
-                <p className="text-xs text-blaqmix-red">{errors.email.message}</p>
+                <p className="text-xs text-blaqmix-red">
+                  {errors.email.message}
+                </p>
               ) : null}
             </div>
 
@@ -254,6 +274,8 @@ const Contact = () => {
                 type="tel"
                 className="form-input"
                 placeholder="+234 800 000 0000"
+                autoComplete="tel"
+                suppressHydrationWarning
                 {...register("phone", {
                   required: "Phone number is required",
                   pattern: {
@@ -263,7 +285,9 @@ const Contact = () => {
                 })}
               />
               {errors.phone ? (
-                <p className="text-xs text-blaqmix-red">{errors.phone.message}</p>
+                <p className="text-xs text-blaqmix-red">
+                  {errors.phone.message}
+                </p>
               ) : null}
             </div>
 
@@ -275,6 +299,7 @@ const Contact = () => {
               <select
                 id="enquiryType"
                 className="form-select"
+                suppressHydrationWarning
                 {...register("enquiryType", {
                   validate: (value) =>
                     value !== "" || "Please select an enquiry type",
@@ -304,6 +329,8 @@ const Contact = () => {
               rows={5}
               className="form-input resize-none"
               placeholder="Tell us how we can help you..."
+              autoComplete="off"
+              suppressHydrationWarning
               {...register("message", {
                 required: "Message is required",
                 minLength: {
@@ -313,7 +340,9 @@ const Contact = () => {
               })}
             />
             {errors.message ? (
-              <p className="text-xs text-blaqmix-red">{errors.message.message}</p>
+              <p className="text-xs text-blaqmix-red">
+                {errors.message.message}
+              </p>
             ) : null}
           </div>
 
