@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/images/blaqmix_sitting.png",
+        url: "/images/blaqmix_standing.jpg",
         width: 1200,
         height: 630,
         alt: "DJ Blaqmix Home",
