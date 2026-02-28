@@ -1,6 +1,6 @@
-# DJ Blaqmix Portfolio Website
+# DJ Blaqmix Website
 
-Official portfolio and booking platform for DJ Blaqmix (The Dimple DJ), built to showcase brand identity, upcoming events, and a smooth enquiry/booking workflow.
+Official website and booking platform for DJ Blaqmix (The Dimple DJ), built to showcase brand identity, upcoming events, and a smooth enquiry/booking workflow.
 
 ## Features
 
