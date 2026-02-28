@@ -7,10 +7,11 @@
     var(--font-inter-next), var(--font-poppins-next), "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-  --font-inter: var(--font-inter-next), "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  --font-poppins: var(--font-poppins-next), var(--font-inter-next), "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
+  --font-inter:
+    var(--font-inter-next), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-poppins:
+    var(--font-poppins-next), var(--font-inter-next), "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
 }
 
 @theme inline {
@@ -39,19 +40,18 @@ body {
   scrollbar-color: #f44336 #111111;
 }
 
-*::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
+::-webkit-scrollbar {
+  width: 2px;
 }
 
-*::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #111111;
 }
 
-*::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #f44336, #ff6f61);
   border-radius: 999px;
-  border: 2px solid #111111;
+  border: 1px solid #111111;
 }
 
 *::-webkit-scrollbar-thumb:hover {

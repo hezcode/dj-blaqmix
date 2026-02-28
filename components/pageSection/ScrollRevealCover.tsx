@@ -71,6 +71,30 @@ const ScrollRevealCover = () => {
   );
 
   useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyTouchAction = body.style.touchAction;
+
+    if (showLoadingOverlay) {
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      body.style.touchAction = "none";
+    } else {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.touchAction = prevBodyTouchAction;
+    }
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.touchAction = prevBodyTouchAction;
+    };
+  }, [showLoadingOverlay]);
+
+  useEffect(() => {
     const onScroll = () => {
       const threshold = Math.max(120, window.innerHeight * 0.25);
       setShowScrollHint(window.scrollY < threshold);
@@ -129,7 +153,9 @@ const ScrollRevealCover = () => {
 
       <div
         className={`fixed bottom-5 right-4 z-30 transition-all duration-400 ${
-          showScrollHint ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+          showScrollHint
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-2"
         }`}
       >
         <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-2xl px-4 py-2.5 flex items-center gap-2">
@@ -151,13 +177,15 @@ const ScrollRevealCover = () => {
           <p className="font-poppins text-sm sm:text-base text-white mb-3">
             {loadingStatus}
           </p>
-          <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+          <div className="h-0.5 rounded-full bg-white/10 overflow-hidden">
             <div
               className="h-full bg-blaqmix-red transition-all duration-300"
               style={{ width: `${Math.min(loadProgress, 100)}%` }}
             />
           </div>
-          <p className="mt-2 text-xs text-gray-300">{Math.round(loadProgress)}%</p>
+          <p className="mt-2 text-xs text-gray-300">
+            {Math.round(loadProgress)}%
+          </p>
         </div>
       </div>
     </div>
