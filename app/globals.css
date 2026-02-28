@@ -3,6 +3,12 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
+  --font-geist-sans:
+    "Inter", "Poppins", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-inter: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-poppins: "Poppins", "Inter", "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 @theme inline {

@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail } from "@/lib/mailer";
-import { getClientIp, isRateLimited, isSubmissionTooFast } from "@/lib/form-security";
+import {
+  getClientIp,
+  isRateLimited,
+  isSubmissionTooFast,
+} from "@/lib/form-security";
 
 export const runtime = "nodejs";
 
@@ -19,8 +23,10 @@ type BookingPayload = {
   startedAt?: number;
 };
 
-const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-const isPastDate = (value: string) => value < new Date().toISOString().split("T")[0];
+const isValidEmail = (value: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const isPastDate = (value: string) =>
+  value < new Date().toISOString().split("T")[0];
 
 const escapeHtml = (value: string) =>
   value
@@ -33,9 +39,10 @@ const escapeHtml = (value: string) =>
 export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json()) as BookingPayload;
-    const ownerEmail = process.env.MAIL_TO;
+    // const ownerEmail = process.env.MAIL_TO;
+    const bookingReplyTo = process.env.BOOKING_REPLY_TO;
 
-    if (!ownerEmail) {
+    if (!bookingReplyTo) {
       return NextResponse.json(
         { error: "Destination email is not configured." },
         { status: 500 },
@@ -74,7 +81,10 @@ export async function POST(request: NextRequest) {
     }
 
     if (!name || name.length < 2) {
-      return NextResponse.json({ error: "Full name is required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Full name is required." },
+        { status: 400 },
+      );
     }
     if (!isValidEmail(email)) {
       return NextResponse.json(
@@ -95,10 +105,16 @@ export async function POST(request: NextRequest) {
       );
     }
     if (!eventTime) {
-      return NextResponse.json({ error: "Event time is required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Event time is required." },
+        { status: 400 },
+      );
     }
     if (!eventType) {
-      return NextResponse.json({ error: "Event type is required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Event type is required." },
+        { status: 400 },
+      );
     }
     if (!venue || venue.length < 5) {
       return NextResponse.json(
@@ -128,7 +144,7 @@ export async function POST(request: NextRequest) {
     const submittedAt = new Date().toISOString();
 
     await sendMail({
-      to: ownerEmail,
+      to: bookingReplyTo,
       replyTo: email,
       subject: `New booking request from ${name}`,
       html: `
@@ -164,7 +180,9 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Booking submission error", error);
     return NextResponse.json(
-      { error: "Unable to submit booking request right now. Please try again." },
+      {
+        error: "Unable to submit booking request right now. Please try again.",
+      },
       { status: 500 },
     );
   }

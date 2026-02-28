@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:clean": "rm -rf .next && next dev",
+    "dev:reset": "pkill -f \"next dev|next/dist/bin/next|npm run dev\" || true; sleep 1; rm -rf .next; next dev",
     "sanity:dev": "sanity dev --host 0.0.0.0 --port 3333",
     "build": "next build",
     "start": "next start",
@@ -36,6 +38,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

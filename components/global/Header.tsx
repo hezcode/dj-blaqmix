@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import router from "next/router";
 
 const navLinks = [
   { href: "/#hero", label: "Home" },
@@ -135,7 +136,10 @@ const Header = () => {
       >
         <div className="page-container">
           <nav className="w-full rounded-2xl border-[0.5px] border-gray-600 bg-white/10 backdrop-blur-2xl px-3 sm:px-4 py-2 flex items-center justify-between gap-3">
-            <div className="relative w-[140px] sm:w-[180px] lg:w-[200px] h-[44px] sm:h-[52px] shrink-0">
+            <div
+              // onClick={() => router.push("/")}
+              className="relative w-[140px] sm:w-[180px] lg:w-[200px] h-[44px] sm:h-[52px] shrink-0"
+            >
               <Image
                 src="/images/blaqmix_logo_black.png"
                 alt="Blaqmix_logo"

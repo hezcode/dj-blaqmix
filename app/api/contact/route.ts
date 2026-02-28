@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail } from "@/lib/mailer";
-import { getClientIp, isRateLimited, isSubmissionTooFast } from "@/lib/form-security";
+import {
+  getClientIp,
+  isRateLimited,
+  isSubmissionTooFast,
+} from "@/lib/form-security";
 
 export const runtime = "nodejs";
 
@@ -14,7 +18,8 @@ type ContactPayload = {
   startedAt?: number;
 };
 
-const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const isValidEmail = (value: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 const escapeHtml = (value: string) =>
   value
@@ -27,9 +32,9 @@ const escapeHtml = (value: string) =>
 export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json()) as ContactPayload;
-    const ownerEmail = process.env.MAIL_TO;
+    const enquiryReplyTo = process.env.ENQUIRY_REPLY_TO;
 
-    if (!ownerEmail) {
+    if (!enquiryReplyTo) {
       return NextResponse.json(
         { error: "Destination email is not configured." },
         { status: 500 },
@@ -63,7 +68,10 @@ export async function POST(request: NextRequest) {
     }
 
     if (!name || name.length < 2) {
-      return NextResponse.json({ error: "Full name is required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Full name is required." },
+        { status: 400 },
+      );
     }
     if (!isValidEmail(email)) {
       return NextResponse.json(
@@ -93,7 +101,7 @@ export async function POST(request: NextRequest) {
     const submittedAt = new Date().toISOString();
 
     await sendMail({
-      to: ownerEmail,
+      to: enquiryReplyTo,
       replyTo: email,
       subject: `New contact enquiry from ${name}`,
       html: `
