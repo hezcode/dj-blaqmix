@@ -41,6 +41,7 @@ const enquiryOptions = [
 const Contact = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [startedAt, setStartedAt] = useState<number | null>(null);
   const {
     register,
     handleSubmit,
@@ -58,6 +59,7 @@ const Contact = () => {
   });
 
   useEffect(() => {
+    setStartedAt(Date.now());
     const timer = window.setTimeout(() => setCanSubmit(true), 2500);
     return () => window.clearTimeout(timer);
   }, []);
@@ -133,13 +135,35 @@ const Contact = () => {
     }
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          startedAt,
+        }),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as
+          | { error?: string }
+          | null;
+        throw new Error(payload?.error || "Unable to submit enquiry.");
+      }
+
       toast.success("Enquiry sent successfully. We will respond shortly.");
       reset();
       setCanSubmit(false);
+      setStartedAt(Date.now());
       window.setTimeout(() => setCanSubmit(true), 2500);
-    } catch {
-      toast.error("Something went wrong. Please try again.");
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.";
+      toast.error(message);
     }
   };
 

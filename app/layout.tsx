@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import Header from "@/components/global/Header";
 import localFont from "next/font/local";
 import { Toaster } from "react-hot-toast";
+
+config.autoAddCss = false;
 
 const clashDisplay = localFont({
   src: [
@@ -58,6 +62,11 @@ export const metadata: Metadata = {
     "DJ Blaqmix delivers high-energy DJ experiences for weddings, corporate events, private parties, and nightlife.",
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/images/blaqmix_logo_black.png",
   },
   openGraph: {
     title: "DJ Blaqmix | The Dimple DJ",

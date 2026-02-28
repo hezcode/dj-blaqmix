@@ -68,7 +68,7 @@ body {
 }
 
 @utility masked-img {
-  mask-image: url("/images/Blaqmix_logo_white.png");
+  mask-image: url("/images/blaqmix_logo_white.png");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 50%;

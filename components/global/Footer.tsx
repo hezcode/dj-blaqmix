@@ -9,27 +9,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-const logosLink = [
-  {
-    id: 1,
-    link: "/images/featured_events/club_vibe.png",
-  },
-  {
-    id: 2,
-    link: "/images/featured_events/club_phoenix.png",
-  },
-  {
-    id: 3,
-    link: "/images/featured_events/highlights_lounge.png",
-  },
-  {
-    id: 4,
-    link: "/images/blaqhouse.png",
-  },
-];
-
-const infiniteSlides = [...logosLink, ...logosLink, ...logosLink, ...logosLink, ...logosLink]
-
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden">
@@ -57,92 +36,123 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-10">
-          <div className="flex items-center gap-x-4 w-full sm:w-auto justify-center sm:justify-start">
-            <Link
-              href="https://www.instagram.com/djblaqmix"
-              target="_blank"
-              className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
-            >
-              <FontAwesomeIcon icon={faInstagram} size="xl" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/djblaqmix"
-              target="_blank"
-              className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
-            >
-              <FontAwesomeIcon icon={faYoutube} size="xl" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/djblaqmix"
-              target="_blank"
-              className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
-            >
-              <FontAwesomeIcon icon={faTiktok} size="xl" />
-            </Link>
-          </div>
-
-          <div className="w-full sm:flex-1 flex gap-x-8 text-base sm:text-lg font-body-inter font-medium justify-center sm:justify-end">
-            <div className="flex flex-col items-start gap-y-2">
-              <Link href="#about" className="hover:link-hovered mx-2">
-                About
-              </Link>
-              <Link href="#blaqhouse" className="hover:link-hovered mx-2">
-                BlaqHouse
-              </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="rounded-3xl bg-white/5 backdrop-blur-2xl p-5 sm:p-6">
+            <div className="relative h-12 sm:h-14 w-[180px] sm:w-[220px]">
+              <Image
+                src="/images/blaqmix_logo_white.png"
+                alt="Blaqmix logo"
+                fill
+                className="object-contain object-left"
+              />
             </div>
-            <div className="flex flex-col items-start gap-y-2">
-              <Link href="#upcoming-events" className="hover:link-hovered mx-2">
-                Upcoming Events
-              </Link>
-              <Link href="#contact" className="hover:link-hovered mx-2">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className=" flex flex-col lg:flex-row items-stretch w-full border-t border-b border-gray-600 my-4 ">
-          <div className="relative overflow-x-hidden w-full lg:w-1/2 px-4 py-4 lg:border-r border-gray-600  ">
-            <div className=" flex items-center slide-animation space-x-2 ">
-              {infiniteSlides.map((logo, i) => (
-                <div
-                  className="bg-gray-400 size-16 sm:size-20 lg:size-[100px] rounded-full p-2 flex items-center justify-center shrink-0"
-                  key={i}
-                >
-                  <Image src={logo.link} alt="logo" width={72} height={72} />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="w-full lg:w-1/2 flex flex-col items-start justify-center gap-y-4 px-4 py-4">
-            <p className=" font-body-inter font-semibold text-sm sm:text-[16px] ">
-              Stay up to date with Blaqhouse -{" "}
-              <span className=" font-light text-xs sm:text-sm ">
-                The Sunday School Experience
-              </span>
+            <p className="mt-4 text-sm sm:text-base text-gray-300">
+              Blaqmix is the main brand delivering premium DJ experiences across
+              weddings, nightlife, and curated live events.
             </p>
-            <div className="flex items-center gap-x-6 sm:gap-x-10 w-full ">
+            <p className="text-center mt-6 sm:text-left text-xs sm:text-sm text-gray-300 mb-5">
+              Follow <span className="text-white font-semibold">Blaqmix</span>{" "}
+              on socials to stay updated on mixes and releases.
+            </p>
+
+            <div className="flex items-center gap-x-4 w-full sm:w-auto justify-center sm:justify-start">
               <Link
-                href="https://www.instagram.com/djblaqmix"
+                href="https://www.instagram.com/djblaqmix?igsh=MTVmZHlhbzRxMzMwYQ%3D%3D&utm_source=qr"
                 target="_blank"
                 className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
               >
                 <FontAwesomeIcon icon={faInstagram} size="xl" />
               </Link>
               <Link
-                href="https://www.instagram.com/djblaqmix"
+                href="https://youtube.com/@djblaqmix?si=A6qntDCgrVBC0Nll"
                 target="_blank"
                 className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
               >
                 <FontAwesomeIcon icon={faYoutube} size="xl" />
               </Link>
               <Link
-                href="https://www.instagram.com/djblaqmix"
+                href="https://www.tiktok.com/@djblaqmix?_r=1&_t=ZS-92i4n3xekbN"
                 target="_blank"
                 className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
               >
                 <FontAwesomeIcon icon={faTiktok} size="xl" />
+              </Link>
+            </div>
+          </div>
+          <div className="rounded-3xl bg-white/5 backdrop-blur-2xl p-5 sm:p-6">
+            <div className="relative h-12 sm:h-14 w-[180px] sm:w-[220px]">
+              <Image
+                src="/images/blaqhouse.png"
+                alt="BlaqHouse logo"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+            <p className="mt-4 text-sm sm:text-base text-gray-300">
+              BlaqHouse is Blaqmix&rsquo;s monthly event series, built to create
+              a bold, high-energy community vibe.
+            </p>
+            <p className="text-center mt-6 sm:text-left text-xs sm:text-sm text-gray-300 mb-5">
+              Follow <span className="text-white font-semibold">BlaqHouse</span>{" "}
+              on socials to stay updated on monthly experiences.
+            </p>
+
+            <div className="flex items-center gap-x-4 w-full sm:w-auto justify-center sm:justify-start">
+              <Link
+                href="https://www.instagram.com/blaqhousehq?igsh=MWh3cXJ3dWVyZ3Vwcw%3D%3D&utm_source=qr"
+                target="_blank"
+                className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
+              >
+                <FontAwesomeIcon icon={faInstagram} size="xl" />
+              </Link>
+              <Link
+                href="https://www.tiktok.com/@blaqhousehq?_r=1&_t=ZN-92i54RQPUyU"
+                target="_blank"
+                className="flex text-white items-center w-10 h-10 bg-gray-800 justify-center rounded-full hover:bg-white hover:text-black "
+              >
+                <FontAwesomeIcon icon={faTiktok} size="xl" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-3xl bg-white/5 backdrop-blur-2xl px-5 py-5 sm:px-6 sm:py-6">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-8 text-base sm:text-lg font-body-inter font-medium">
+            <div className="flex flex-col items-start sm:items-start gap-y-2">
+              <p className="text-xs mb-2 uppercase tracking-wider text-gray-400">
+                Quick Links
+              </p>
+              <Link href="#about" className="hover:link-hovered">
+                About
+              </Link>
+              <Link href="#blaqhouse" className="hover:link-hovered">
+                BlaqHouse
+              </Link>
+              <Link href="#upcoming-events" className="hover:link-hovered">
+                Upcoming Events
+              </Link>
+              <Link href="#contact" className="hover:link-hovered">
+                Contact
+              </Link>
+            </div>
+            <div className="flex flex-col items-start sm:items-start gap-y-2">
+              <p className="text-xs mb-2 uppercase tracking-wider text-gray-400">
+                Services
+              </p>
+              <span className="text-white/90">Weddings</span>
+              <span className="text-white/90">Corporate Events</span>
+              <span className="text-white/90">Private Parties</span>
+              <span className="text-white/90">Club & Festival Sets</span>
+            </div>
+            <div className="flex flex-col items-start sm:items-start gap-y-2">
+              <p className="text-xs mb-2 uppercase tracking-wider text-gray-400">
+                Bookings & Enquiries
+              </p>
+              <Link href="/make-booking" className="hover:link-hovered">
+                Make a Booking
+              </Link>
+              <Link href="#contact" className="hover:link-hovered">
+                General Enquiries
               </Link>
             </div>
           </div>
