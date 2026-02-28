@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DJ Blaqmix Portfolio Website
+
+Official portfolio and booking platform for DJ Blaqmix (The Dimple DJ), built to showcase brand identity, upcoming events, and a smooth enquiry/booking workflow.
+
+## Features
+
+- Cinematic hero reveal with GSAP-powered mask animation and loading overlay.
+- Fully responsive layout and interactions across mobile, tablet, and desktop.
+- Animated sections for intro, about, BlaqHouse highlights, and storytelling content.
+- Upcoming events pulled from Sanity CMS and rendered in a horizontal carousel with status badges.
+- Dedicated enquiry form and separate booking page with modern UI and validation.
+- Anti-spam protection (honeypot, submit timing checks, and rate limiting).
+- Email workflow for both forms:
+  - sends submission details to owner inbox
+  - sends confirmation email to the visitor
+- SEO setup with metadata, Open Graph/Twitter cards, `robots.txt`, `sitemap.xml`, and JSON-LD structured data.
+- Brand-aligned footer with direct social links for Blaqmix and BlaqHouse.
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router), React, TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animation:** GSAP (`ScrollTrigger`, `SplitText`, `@gsap/react`)
+- **Forms & UX:** `react-hook-form`, `react-hot-toast`
+- **Icons:** Font Awesome
+- **CMS:** Sanity (content + studio)
+- **Email:** Nodemailer (SMTP)
+- **Deployment target:** Vercel-friendly setup
 
 ## Getting Started
 
-First, run the development server:
+### 1) Prerequisites
+
+- Node.js 20+ recommended
+- npm
+
+### 2) Install dependencies
+
+```bash
+npm install
+```
+
+### 3) Configure environment variables
+
+Create a `.env.local` file in the project root and set:
+
+```env
+# Public site + SEO
+NEXT_PUBLIC_SITE_URL=
+
+# Sanity (events)
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2025-01-01
+
+# SMTP (Nodemailer)
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASS=
+MAIL_FROM=
+
+# Form destination emails
+BOOKING_REPLY_TO=
+ENQUIRY_REPLY_TO=
+```
+
+### 4) Run the app locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 5) Optional: Run Sanity Studio locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run sanity:dev
+```
 
-## Learn More
+Open `http://localhost:3333`.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+.
+├── app/                    # Next.js routes, layouts, metadata routes, API routes
+│   ├── api/                # /api/contact and /api/booking handlers
+│   ├── make-booking/       # Dedicated booking page + route metadata
+│   ├── robots.ts           # robots.txt generator
+│   ├── sitemap.ts          # sitemap.xml generator
+│   ├── layout.tsx          # Global layout + global SEO metadata
+│   └── page.tsx            # Homepage composition + JSON-LD
+├── components/
+│   ├── global/             # Header, Footer
+│   ├── pageSection/        # Hero, About, Events, Contact, BlaqHouse sections
+│   └── UI/                 # Shared UI atoms
+├── lib/                    # Sanity client/queries, mailer, form security, event fetchers
+├── sanity/                 # Sanity schema definitions
+├── public/                 # Static assets (images, logos, fonts)
+├── types/                  # Shared TypeScript types
+├── sanity.config.ts        # Sanity Studio config
+└── next.config.ts          # Next.js config (including remote image settings)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Booking page: `/make-booking`
+- Enquiries: homepage contact section (`/#contact`)
+- Socials:
+  - Instagram (DJ Blaqmix): https://www.instagram.com/djblaqmix
+  - YouTube: https://youtube.com/@djblaqmix
+  - TikTok (DJ Blaqmix): https://www.tiktok.com/@djblaqmix
+  - Instagram (BlaqHouse): https://www.instagram.com/blaqhousehq
+  - TikTok (BlaqHouse): https://www.tiktok.com/@blaqhousehq
