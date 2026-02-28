@@ -51,8 +51,33 @@ export const metadata: Metadata = {
   },
   description:
     "DJ Blaqmix delivers high-energy DJ experiences for weddings, corporate events, private parties, and nightlife.",
+  keywords: [
+    "DJ Blaqmix",
+    "Blaqmix",
+    "DJ in Nigeria",
+    "Lagos DJ",
+    "Wedding DJ",
+    "Corporate event DJ",
+    "Private party DJ",
+    "BlaqHouse",
+  ],
+  authors: [{ name: "DJ Blaqmix" }],
+  creator: "DJ Blaqmix",
+  publisher: "DJ Blaqmix",
+  category: "Music",
   alternates: {
     canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   icons: {
     icon: "/icon.svg",

@@ -39,7 +39,6 @@ const escapeHtml = (value: string) =>
 export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json()) as BookingPayload;
-    // const ownerEmail = process.env.MAIL_TO;
     const bookingReplyTo = process.env.BOOKING_REPLY_TO;
 
     if (!bookingReplyTo) {

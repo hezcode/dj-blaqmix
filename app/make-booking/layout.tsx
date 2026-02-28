@@ -4,6 +4,13 @@ export const metadata: Metadata = {
   title: "Make Booking",
   description:
     "Send a booking request to DJ Blaqmix for weddings, corporate events, festivals, private parties, and more.",
+  keywords: [
+    "Book DJ Blaqmix",
+    "DJ booking form",
+    "Wedding DJ booking",
+    "Corporate DJ booking",
+    "Private party DJ booking",
+  ],
   alternates: {
     canonical: "/make-booking",
   },
