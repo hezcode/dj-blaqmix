@@ -3,10 +3,24 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import Header from "@/components/global/Header";
+import { Inter, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import { Toaster } from "react-hot-toast";
 
 config.autoAddCss = false;
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter-next",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins-next",
+  display: "swap",
+});
 
 const clashDisplay = localFont({
   src: [
@@ -79,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${clashDisplay.variable} relative antialiased`}
+        className={`${inter.variable} ${poppins.variable} ${clashDisplay.variable} relative antialiased`}
       >
         <Header />
         {children}

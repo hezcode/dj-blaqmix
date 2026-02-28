@@ -102,7 +102,7 @@ const EventsCarousel = ({ events }: EventsCarouselProps) => {
     <>
       <div
         ref={scrollRef}
-        className="overflow-x-auto hide-scroll snap-x snap-mandatory scroll-smooth"
+        className="overflow-x-auto hide-scroll events-scrollbar-hide snap-x snap-mandatory scroll-smooth"
       >
         <div
           ref={trackRef}
