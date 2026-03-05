@@ -1,8 +1,9 @@
 import { sanityClient, isSanityConfigured } from "@/lib/sanity.client";
 import { UPCOMING_EVENTS_QUERY } from "@/lib/sanity.queries";
 import type { EventItem } from "@/types/event";
+import { unstable_cache } from "next/cache";
 
-export const getUpcomingEvents = async (): Promise<EventItem[]> => {
+const fetchUpcomingEvents = async (): Promise<EventItem[]> => {
   if (!isSanityConfigured) return [];
 
   try {
@@ -12,3 +13,15 @@ export const getUpcomingEvents = async (): Promise<EventItem[]> => {
     return [];
   }
 };
+
+const getCachedUpcomingEvents = unstable_cache(
+  fetchUpcomingEvents,
+  ["upcoming-events"],
+  {
+    revalidate: 60,
+    tags: ["events"],
+  },
+);
+
+export const getUpcomingEvents = async (): Promise<EventItem[]> =>
+  getCachedUpcomingEvents();

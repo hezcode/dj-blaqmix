@@ -91,8 +91,7 @@ const EventsCarousel = ({ events }: EventsCarouselProps) => {
           No upcoming events yet.
         </p>
         <p className="mt-2 text-sm text-gray-400">
-          New events will appear here as soon as they are published from the
-          CMS.
+          New events will appear here as soon as they are available.
         </p>
       </div>
     );
