@@ -70,6 +70,61 @@ export const eventType = {
       description: "Example: Free, ₦10,000, Early Bird ₦5,000",
     },
     {
+      name: "pricingTiers",
+      title: "Pricing Tiers",
+      type: "array",
+      description:
+        "Add each access level shown on the event card, including its price and included items.",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "name",
+              title: "Tier Name",
+              type: "string",
+              validation: (Rule: { required: () => unknown }) =>
+                Rule.required(),
+            },
+            {
+              name: "price",
+              title: "Price",
+              type: "string",
+              description: "Example: 100,000 or ₦100,000",
+              validation: (Rule: { required: () => unknown }) =>
+                Rule.required(),
+            },
+            {
+              name: "benefits",
+              title: "Benefits",
+              type: "array",
+              of: [{ type: "string" }],
+              description:
+                "Add each included item separately. They will be displayed as one line on the event card.",
+            },
+          ],
+          preview: {
+            select: {
+              title: "name",
+              subtitle: "price",
+            },
+            prepare({
+              title,
+              subtitle,
+            }: {
+              title?: string;
+              subtitle?: string;
+            }) {
+              return {
+                title: title || "Pricing tier",
+                subtitle: subtitle || "No price set",
+              };
+            },
+          },
+        },
+      ],
+    },
+    {
       name: "status",
       title: "Status",
       type: "string",

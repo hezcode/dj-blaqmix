@@ -13,6 +13,12 @@ export const UPCOMING_EVENTS_QUERY = `*[
   city,
   eventType,
   priceLabel,
+  pricingTiers[]{
+    _key,
+    name,
+    price,
+    benefits
+  },
   status,
   ticketUrl,
   shortDescription,
