@@ -22,7 +22,9 @@ const IntroSection = () => {
       });
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const introTitleSplit = new SplitText(".title", { type: "words, chars" });
+        const introTitleSplit = new SplitText(".title", {
+          type: "words, chars",
+        });
 
         // timeline for texts
         gsap
@@ -68,12 +70,12 @@ const IntroSection = () => {
 
         return () => {
           introTitleSplit.revert();
-        }; 
+        };
       });
 
       return () => mm.revert();
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (

@@ -6,6 +6,7 @@ import Header from "@/components/global/Header";
 import { Inter, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/next";
 
 config.autoAddCss = false;
 
@@ -120,6 +121,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${poppins.variable} ${clashDisplay.variable} relative antialiased`}
       >
+        <Analytics />
         <Header />
         {children}
         <Toaster
