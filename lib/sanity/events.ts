@@ -1,5 +1,5 @@
-import { sanityClient, isSanityConfigured } from "@/lib/sanity.client";
-import { UPCOMING_EVENTS_QUERY } from "@/lib/sanity.queries";
+import { sanityClient, isSanityConfigured } from "@/lib/sanity/sanity.client";
+import { UPCOMING_EVENTS_QUERY } from "@/lib/sanity/sanity.queries";
 import type { EventItem } from "@/types/event";
 import { unstable_cache } from "next/cache";
 

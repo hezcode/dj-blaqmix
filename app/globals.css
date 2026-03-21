@@ -37,6 +37,7 @@ body {
 /* Global scrollbar styling */
 * {
   scrollbar-width: thin;
+  scroll-padding-top: 20px;
   scrollbar-color: #f44336 #111111;
 }
 

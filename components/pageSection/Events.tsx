@@ -1,5 +1,5 @@
 import EventsCarousel from "@/components/pageSection/EventsCarousel";
-import { getUpcomingEvents } from "@/lib/events";
+import { getUpcomingEvents } from "@/lib/sanity/events";
 
 const Events = async () => {
   const events = await getUpcomingEvents();

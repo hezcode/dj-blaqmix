@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendMail } from "@/lib/mailer";
+import { sendMail } from "@/lib/nodemailer/mailer";
 import {
   getClientIp,
   isRateLimited,

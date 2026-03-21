@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
+      {
+        protocol: "https",
+        hostname: "ezbotybyjiriuajyicex.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/blaqmix/**",
+      },
     ],
   },
 };
